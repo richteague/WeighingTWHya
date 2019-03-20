@@ -6,4 +6,4 @@
 
 * `TWHya.Band7.20mas.fits` - Band 7 data published in [Andrews et al. (2016)](https://ui.adsabs.harvard.edu/#abs/2016ApJ...820L..40A/abstract) and available from [Sean Andrew's website](https://www.cfa.harvard.edu/~sandrews/).
 
-* `TWHya.Band7.30mas.fits` - similar to the data above but with a circular beam of 30mas.
+* `TWHya.Band7.30mas.fits` - similar to the data above but with a circular beam of 30mas. Available from [Sean Andrew's website](https://www.cfa.harvard.edu/~sandrews/).
