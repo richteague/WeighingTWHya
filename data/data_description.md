@@ -7,3 +7,7 @@
 * `TWHya.Band7.20mas.fits` - Band 7 data published in [Andrews et al. (2016)](https://ui.adsabs.harvard.edu/#abs/2016ApJ...820L..40A/abstract) and available from [Sean Andrew's website](https://www.cfa.harvard.edu/~sandrews/).
 
 * `TWHya.Band7.30mas.fits` - similar to the data above but with a circular beam of 30mas. Available from [Sean Andrew's website](https://www.cfa.harvard.edu/~sandrews/).
+
+* `TWHya.12CO.(d)v0.fits` - line center and uncertainty on the line center for the high resolution J = 3 - 2 data published in [Huang et al (2018)](https://ui.adsabs.harvard.edu/#abs/2018ApJ...852..122H/abstract) and calculated using [`bettermoments`](https://github.com/richteague/bettermoments)
+
+* `TWHya.13CO.(d)v0.fits` - as above but for 13CO J = 3 - 2.
