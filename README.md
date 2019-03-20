@@ -1,2 +1,3 @@
-# WeighingTWHya
-Constraining the (dynamical) mass of TW Hya
+# Weighing TW Hydrae
+
+Constraining the (dynamical) mass of TW Hya, everyone's favourite source.
