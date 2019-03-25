@@ -14,7 +14,7 @@ $ bettermoments dataverse_TWHya_CO_cube.fits
 
 which created both maps of the line center, `dataverse_TWHya_CO_cube.v0.fits`, and the uncertainties on the line center, `dataverse_TWHya_CO_cube.dv0.fits`.
 
-#### Continuum Data - `./data/cont/`
+### Continuum Data - `./data/cont/`
 
 * `TWHya.230GHz.fits` - Band 6 data with a resolution of 60.7 mas x 37.9 mas.
 
@@ -22,9 +22,13 @@ which created both maps of the line center, `dataverse_TWHya_CO_cube.v0.fits`, a
 
 * `TWHya.345GHz.fits` - Band 7 data with a resolution of 35.1 mas x 27.5 mas.
 
-* `TWHya.290GHz.40mas.fits` - as above, but smoothed down to a circular 40mas beam using `imsmooth` in CASA.
+* `TWHya.230GHz.circ.fits` - 230GHz image smoothed down to a circular beam of 62 mas.
 
-#### Line Data - `./data/line/`
+* `TWHya.290GHz.circ.fits` - 290GHz image smoothed down to a circular beam of 38 mas.
+
+* `TWHya.345GHz.circ.fits` - 345GHz image smoothed down to a circular beam of 36 mas.
+
+### Line Data - `./data/line/`
 
 * `TWHya.12CO.v0.fits` - line center map of the 12CO data with a resolution of 139 mas x 131 mas.
 
