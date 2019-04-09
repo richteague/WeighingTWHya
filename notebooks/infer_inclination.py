@@ -9,9 +9,12 @@ Usage:
 python infer_inclination.py /path/to/cube.fits
 """
 
+import os
 import sys
 import pymc3 as pm
 import numpy as np
+import matplotlib.pyplot as plt
+
 import exoplanet as xo
 import theano.tensor as tt
 from imgcube.cube import imagecube
@@ -21,7 +24,10 @@ np.random.seed(4321)
 # Note we convert to brightness temperature assuming the Rayleigh-Jeans law.
 # This is just to make the numbers more manageable.
 
-cube = imagecube(sys.argv[1], clip=1.1, kelvin='RJ')
+filepath = os.path.abspath(sys.argv[1])
+filename = os.path.split(filepath)[1]
+print(filepath, filename)
+cube = imagecube(filepath, clip=1.1, kelvin='RJ')
 
 # Pre-compute the meshgrid and flatten them.
 
@@ -101,19 +107,39 @@ with pm.Model() as model:
     gp = xo.gp.GP(kernel, r_sort, tt.exp(0.5*logs2) + np.zeros_like(y), J=2)
 
     # Compute the mean model
-    line = mu + slope * r_sort
+    line = mu + slope * (r_sort - tt.mean(r_sort))
 
     # Compute the GP likelihood and predictions
     pm.Potential("loglike", gp.log_likelihood(y_sort - line))
     gp_pred = gp.predict() + line
 
+    def optimize_geom(map_soln):
+        map_soln = xo.optimize(map_soln, vars=[x0, y0])
+        map_soln = xo.optimize(map_soln, vars=[inc])
+        map_soln = xo.optimize(map_soln, vars=[pa_deg])
+        map_soln = xo.optimize(map_soln, vars=[inc])
+        map_soln = xo.optimize(map_soln, vars=[x0, y0])
+        map_soln = xo.optimize(map_soln, vars=[inc, pa_deg, x0, y0])
+        return map_soln
+
     # Optimize to find the MAP
     map_soln = model.test_point
     map_soln = xo.optimize(map_soln, vars=[logs2, mu, slope])
-    map_soln = xo.optimize(map_soln, vars=[x0, y0])
-    map_soln = xo.optimize(map_soln, vars=[inc, pa_deg])
+    map_soln = optimize_geom(map_soln)
+    map_soln = xo.optimize(map_soln, vars=[logs2, mu, slope])
+    map_soln = optimize_geom(map_soln)
     map_soln = xo.optimize(map_soln, vars=[logs2, logpower, logtau])
+    map_soln = optimize_geom(map_soln)
     map_soln = xo.optimize(map_soln)
+
+    x_plot, y1_plot, y2_plot, y3_plot = xo.utils.eval_in_model(
+        [r_sort, y_sort, line, gp_pred], map_soln)
+    plt.plot(x_plot, y1_plot, ".k", label="data")
+    plt.plot(x_plot, y2_plot, "r", label="linear model")
+    plt.plot(x_plot, y3_plot, "g", label="gp model")
+    plt.legend(fontsize=10)
+    plt.title(filename)
+    plt.savefig(filename.replace('.fits', '.png'), bbox_inches="tight")
 
 # Run the sampler.
 np.random.seed(42)
@@ -125,4 +151,4 @@ with model:
 
 # Save the trace.
 samples = pm.trace_to_dataframe(trace)
-samples.to_pickle('%s' % (sys.argv[1].replace('.fits', '.trace.dat')))
+samples.to_pickle('%s' % (filename.replace('.fits', '.trace.dat')))
