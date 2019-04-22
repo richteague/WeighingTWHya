@@ -30,10 +30,14 @@ which created both maps of the line center, `dataverse_TWHya_CO_cube.v0.fits`, a
 
 ### Line Data - `./data/line/`
 
-* `TWHya.12CO.v0.fits` - line center map of the 12CO data with a resolution of 139 mas x 131 mas.
+* `TWHya.12CO_v0.fits` - line center map of the 12CO data with a resolution of 139 mas x 131 mas.
 
-* `TWHya.12CO.dv0.fits` - uncertainty on the line center of the 12CO data with a resolution of 139 mas x 131 mas.
+* `TWHya.12CO_dv0.fits` - uncertainty on the line center of the 12CO data with a resolution of 139 mas x 131 mas.
 
-* `TWHya.13CO.v0.fits` - line center map of the 13CO data with a resolution of 0.45" x 0.35".
+* `TWHya.13CO_v0.fits` - line center map of the 13CO data with a resolution of 0.45" x 0.35".
 
-* `TWHya.13CO.dv0.fits` - uncertainty on the line center of the 13CO data with a resolution of 0.45" x 0.35".
+* `TWHya.13CO_dv0.fits` - uncertainty on the line center of the 13CO data with a resolution of 0.45" x 0.35".
+
+* `TWHya.12CO_first_5sig.fits` - first moment map clipping at 5 sigma.
+
+* `TWHya.12CO_first_3sig.fits` - first moment map clipping at 3 sigma.
