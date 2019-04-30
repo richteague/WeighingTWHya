@@ -38,6 +38,6 @@ which created both maps of the line center, `dataverse_TWHya_CO_cube.v0.fits`, a
 
 * `TWHya.13CO_dv0.fits` - uncertainty on the line center of the 13CO data with a resolution of 0.45" x 0.35".
 
-* `TWHya.12CO_first_5sig.fits` - first moment map clipping at 5 sigma.
+* `TWHya.12CO_M1.fits` - first moment map clipping at 5 sigma.
 
-* `TWHya.12CO_first_3sig.fits` - first moment map clipping at 3 sigma.
+* `TWHya.12CO_dM1.fits` - uncertainty on the first moment map.
