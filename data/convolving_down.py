@@ -46,3 +46,18 @@ exportfits(imagename='TWHya.345GHz.circ.im',
            velocity=True)
 rmtables('TWHya.345GHz.im')
 rmtables('TWHYa.345GHz.circ.im')
+
+# 345 GHz - 35 mas x 28 mas.
+importfits(fitsimage='TWHya.345GHz.fits',
+           imagename='TWHya.345GHz.im')
+imsmooth(imagename='TWHya.345GHz.im',
+         outfile='TWHya.345GHz.largecirc.im',
+         kernel='gaussian',
+         beam={'major': '0.062arcsec', 'minor': '0.062arcsec', 'pa': '0deg'},
+         targetres=True)
+exportfits(imagename='TWHya.345GHz.largecirc.im',
+           fitsimage='TWHya.345GHz.largecirc.fits',
+           dropstokes=True,
+           velocity=True)
+rmtables('TWHya.345GHz.im')
+rmtables('TWHYa.345GHz.largecirc.im')

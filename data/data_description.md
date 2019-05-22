@@ -28,6 +28,8 @@ which created both maps of the line center, `dataverse_TWHya_CO_cube.v0.fits`, a
 
 * `TWHya.345GHz.circ.fits` - 345GHz image smoothed down to a circular beam of 36 mas.
 
+* `TWHya.345GHz.largecirc.fits` - 345GHz image smoothed down to a circular beam of 62 mas to match the Band 6 data.
+
 ### Line Data - `./data/line/`
 
 * `TWHya.12CO_v0.fits` - line center map of the 12CO data with a resolution of 139 mas x 131 mas.
